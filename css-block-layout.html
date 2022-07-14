@@ -1,74 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <head>
   <title>Document</title>
-</head>
+
 <style>
-body{
-  margin: 0;
-}
-header {
-  background-color: black;
-  min-width: 600px;
-}
-header nav {
-  margin: auto;
-  color:white;
-  width: 600px;
-}
-footer {
-  background-color: violet;
-  text-align: center;
-}
-main{
-  width: 600px;
-  margin: auto;
-  margin-top: 20px;
+  body {
+    margin: 0;
+  }
 
-}
+  header {
+    background-color: black;
+    min-width: 600px;
+  }
 
-li {
-  padding-top: 1px;
-  border-bottom: 2px dotted ;
-  margin-bottom: -1px;
-}
-div list{
-  xdisplay: flow-root;
-  overflow: hidden;
-}
-.p3{
-  border: 1px dotted transparent;
-  border-bottom-color: black;
-  width: 598px;
-  margin: 0 auto;
-}
-#d1{
-  width: 600px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
+  header nav {
+    margin: auto;
+    color:white;
+    width: 600px;
+  }
 
-div:not([id="d1"]){
-  width: 170px;
-  height: 35px;
-  border: 3px solid black;
-  background-color: pink;
-  margin-top: 15px;
-  text-align: center;
-  line-height: 34px;
-}
-div:not([id="d1"]):hover {
-  background-color: red;
-}
-div:nth-child(3n+2) {
-  margin-left: 210px;
-  margin-top: -40px;
-}
-div:nth-child(3n+3) {
-  margin-left: 420px;
-  margin-top: -40px;
-}
-</style>
+  footer {
+    background-color: violet;
+    text-align: center;
+  }
+
+  main {
+    width: 600px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  li {
+    padding-top: 1px;
+    border-bottom: 2px dotted ;
+    margin-bottom: -1px;
+  }
+
+  div list{
+    display: flow-root;
+    overflow: hidden;
+  }
+
+  .p3 {
+    border: 1px dotted transparent;
+    border-bottom-color: black;
+    width: 598px;
+    margin: 0 auto;
+  }
+
+  .d1 {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .d2 {
+    text-align-last: justify;
+    margin-top: 15px;
+  }
+
+  .d4 {
+    margin-top: 15px;
+  }
+
+  .d3 {
+    display: inline-block;
+    width: 174px;
+    height: 34px;
+    background-color: pink;
+    border: 3px solid black;
+    text-align-last: center;
+    line-height: 34px;
+  }
+
+  .d3:hover {
+    background-color: red;
+  }
+
+  </style>
+</head>
 <body>
   <header>
     <nav>
@@ -77,25 +90,34 @@ div:nth-child(3n+3) {
   </header>
   <main>
     <p class="p1">页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
-    <div id="d1">
-      <div>宽180高40(包含边框)</div>
-      <div>产品</div>
-      <div>产品</div>
-      <div>水平间隙30px</div>
-      <div>产品</div>
-      <div>产品</div>
-      <div>垂直间隙15px</div>
-      <div>产品</div>
-      <div>产品</div>
-      <div>边框宽度3px</div>
-      <div>产品</div>
-      <div>产品</div>
+    <div class="d1">
+      <div class="d2">
+        <span class="d3">宽180高40(包含边框)</span>
+        <span class="d3">产品</span>
+        <span class="d3">产品</span>
+      </div>
+      <div class="d2">
+        <span class="d3">水平间隙30px</span>
+        <span class="d3">产品</span>
+        <span class="d3">产品</span>
+      </div>
+      <div class="d2">
+        <span class="d3">垂直间隙15px</span>
+        <span class="d3">产品</span>
+        <span class="d3">产品</span>
+      <div class="d2">
+        <span class="d3">边框宽度3px</span>
+        <span class="d3">产品</span>
+        <span class="d3">产品</span>
+      </div>
     </div>
+    <div class="d4">
       <p class="p3">link</p>
       <p class="p3">link</p>
       <p class="p3">link</p>
       <p class="p3">link</p>
       <p class="p3">link</p>
+    </div>
   </main>
   <footer>
     <p>©版权所有<br>本页所有布局均使用块元素</p>
