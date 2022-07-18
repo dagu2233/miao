@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+
+    html {
+      zoom: 2;
+    }
+    div {
+      position: relative;
+      display: inline-block;
+      padding: .5em;
+    }
+    ul {
+      list-style: none;
+      display: none;
+      margin: 0;
+      padding-top: .5em;
+      padding-bottom: .5em;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      white-space: nowrap;
+      background-color: #3c3c3c;
+      box-shadow: 0 0 5px #333;
+      border-radius: .3em;
+    }
+    div:hover > ul {
+      display: block;
+    }
+    ul li:hover {
+      background-color: gold;
+      position: relative;
+    }
+    div ul li:hover > ul {
+      display: block;
+      list-style: none;
+      position: absolute;
+      white-space: nowrap;
+      left: 160px;
+      top: 0px;
+    }
+    div {
+      background-color: #3c3c3c;
+      color: #c4c4c4;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <div>文件
+      <ul>
+        <li>新建文本文件</li>
+        <li>新建文件</li>
+        <li>新建窗口</li>
+        <li>打开文件</li>
+        <li>打开文件夹
+          <ul>
+            <li>重新打开已经关闭的编辑器</li>
+            <li>更多...</li>
+            <li>清除最近打开记录</li>
+          </ul>
+        </li>
+        <li>从文件打开文件区</li>
+        <li>打开最近的文件</li>
+        <li>将文件夹添加到工作区</li>
+        <li>将工作区另存为</li>
+        <li>复制工作区</li>
+        <li>保存</li>
+        <li>另存为</li>
+        <li>全部保存</li>
+        <li>共享</li>
+        <li>自动保存</li>
+        <li >首选项
+          <ul >
+            <li>设置</li>
+            <li>练级服务设置</li>
+            <li>遥测设置</li>
+            <li>扩展</li>
+            <li>键盘快捷方式</li>
+            <li>从-中迁移键盘快捷方式...</li>
+            <li>配置用户代码片段</li>
+            <li>颜色主题</li>
+            <li>文件图标主题</li>
+            <li>产品图标主题</li>
+            <li>打开设置同步...</li>
+          </ul>
+        </li>
+        <li>还原文件</li>
+        <li>关闭编辑器</li>
+        <li>关闭窗口</li>
+        <li>推出</li>
+      </ul>
+    </div>
+    <div>编辑
+      <ul>
+        <li>撤销</li>
+        <li>恢复</li>
+        <li>剪切</li>
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>查找</li>
+        <li>替换</li>
+        <li>从文件中查找</li>
+        <li>从文件中替换</li>
+        <li>切换行注释</li>
+        <li>切换块注释</li>
+        <li>Emmet:展开缩写</li>
+      </ul>
+    </div>
+    <div>选择
+      <ul>
+        <li>全选</li>
+        <li>扩大选区</li>
+        <li>缩小选区</li>
+        <li>向上复制一行</li>
+        <li>向下复制一行</li>
+        <li>向上移动一行</li>
+        <li>向下移动一行</li>
+        <li>重复选择</li>
+        <li>向上添加光标</li>
+        <li>向下添加光标</li>
+        <li>在行尾添加光标</li>
+        <li>添加下一个匹配项</li>
+        <li>添加上一个匹配项</li>
+        <li>选择所有匹配项</li>
+        <li>切换为“CTRL+单机”进行多光标选择</li>
+        <li>列选择模式</li>
+      </ul>
+    </div>
+    <div>查看
+      <ul>
+        <li>命令面板</li>
+        <li>打开视图</li>
+        <li>外观</li>
+        <li>编辐器布局</li>
+        <li>资源管理器</li>
+        <li>搜索</li>
+        <li>源代码管理</li>
+        <li>运行</li>
+        <li>扩展</li>
+        <li>问题</li>
+        <li>输出</li>
+        <li>调试控制台</li>
+        <li>终端</li>
+        <li>自动换行</li>
+        <li>显示缩略图</li>
+        <li>显示导航痕迹</li>
+        <li>显示空格</li>
+        <li>显示控制字符</li>
+      </ul>
+    </div>
+    <div>转到
+      <ul>
+        <li>返回</li>
+        <li>前进</li>
+        <li>上次编辑位置</li>
+        <li>切换编辑器</li>
+        <li>切换组</li>
+        <li>转到文件...</li>
+        <li>转到工作区中的符号</li>
+        <li>转到编辑器中的符号...</li>
+        <li>转到定义</li>
+        <li>转到类型定义</li>
+        <li>转到声明</li>
+        <li>转到现实</li>
+        <li>转到引用</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div>运行</div>
+    <div>终端</div>
+    <div>帮助</div>
+  </div>
+</body>
+</html>
