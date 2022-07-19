@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-image:url(https://img-blog.csdnimg.cn/20191012183039430.png) ;
+      background-position: left;
+      position:absolute;
+      background-repeat: no-repeat;
+      cursor: pointer;
+
+
+    }
+
+    .box:hover, .hear:focus {
+      display: inline-block;
+      animation-name: mymove;
+      animation-duration: .8s;
+      animation-iteration-count: 1;
+      animation-timing-function: steps(28);
+      background-position: right;
+      animation-fill-mode:forwards;
+    }
+
+    @keyframes mymove {
+      0% {
+        background-position:left;
+      }
+      100% {
+        background-position:right;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <div class="box " ></div>
+</body>
+</html>
