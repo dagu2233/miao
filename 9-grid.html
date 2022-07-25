@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .block {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      box-sizing: content-box;
+      width: 180px;
+      height: auto;
+      cursor:pointer;
+      justify-content: center;
+    }
+    .small {
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+      margin: 0;
+      text-align: center;
+      line-height: 50px;
+      border: 4px solid blue;
+      margin: 0 -4px -4px 0;
+      flex: 0 0 auto;
+    }
+    .small:hover {
+      border: 4px solid red;
+      z-index: 1;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="block">
+    <div class="small">1</div>
+    <div class="small">2</div>
+    <div class="small">3</div>
+    <div class="small">4</div>
+    <div class="small">5</div>
+    <div class="small">6</div>
+    <div class="small">7</div>
+    <div class="small">8</div>
+    <div class="small">9</div>
+  </div>
+</body>
+</html>
