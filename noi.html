@@ -1,0 +1,226 @@
+
+<script  id="ch0103/01">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = a + b
+  console.log(c)
+</script>
+
+<script  id="ch0103/02">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = Number(prompt(c))
+  var d = (a + b) * c
+  console.log(d)
+</script>
+
+<script  id="ch0103/03">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = Number(prompt(c))
+  var d = parseInt((a + b) / c)
+  console.log(d)
+
+</script>
+
+<script  id="ch0103/04">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = parseInt(a / b)
+  var d = a % b
+  console.log(c,d)
+
+
+</script>
+
+<script  id="ch0103/05">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = (a / b).toFixed(9)
+  console.log(c)
+
+</script>
+<script id="ch0103/06">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c =(b / a * 100).toFixed(3) + '%'
+  console.log(c)
+</script>
+
+<script id="ch0103/07">
+  var x = Number(prompt(x))
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var c = Number(prompt(c))
+  var d = Number(prompt(d))
+  var f = ((a * x ** 3) + (b * x ** 2) + c * x + d).toFixed(7)
+  console.log(f)
+</script>
+
+<script  id="ch0103/08">
+  var f = Number(prompt(f))
+  var c = (5 * (f - 32) / 9).toFixed(5)
+  console.log(c)
+</script>
+
+<script  id="ch0103/09">
+  var r = Number(prompt(r))
+  pi = 3.14159
+  var d = (r * 2).toFixed(4)
+  var c = (r * 2 * pi).toFixed(4)
+  var e = (pi * r * r).toFixed(4)
+  console.log(d,c,e)
+</script>
+
+<script  id="ch0103/10">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var R = (1 / (1 / a + 1 / b)).toFixed(2)
+  console.log(R)
+</script>
+
+<script  id="ch0103/11">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  var d = (a % b).toFixed(4)
+  console.log(d)
+</script>
+
+<script  id="ch0103/12">
+  var r = Number(prompt(r))
+  pi = 3.14
+  var V = (4 / 3 * pi * r ** 3).toFixed(2)
+  console.log(V)
+
+
+</script>
+
+<script  id="ch0103/13">
+  var a = Number(prompt(a))
+  var b = parseInt(a / 100) + ''
+  var c = parseInt((a % 10) / 10) + ''
+  var d = a % 100 + ''
+  var e = d + c + b
+
+  console.log(e )
+
+</script>
+
+<script  id="ch0103/14">
+  var a = Number(prompt(a))
+  var b = Number(prompt(b))
+  pi = 3.14159
+  var c = Math.ceil(20000 / (a * b * b * pi))
+  console.log(c )
+
+</script>
+
+<script  id="ch0103/15">
+  var n = Number(prompt(n))
+  var x = Number(prompt(x))
+  var y = Number(prompt(y))
+  var d = n - Math.ceil(y / x)
+  console.log(d )
+</script>
+
+<script  id="ch0103/16">
+  var x1 = Number(prompt())
+  var y1 = Number(prompt())
+  var x2 = Number(prompt())
+  var y2 = Number(prompt())
+  var C = (Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)).toFixed(3)
+  console.log(C )
+</script>
+
+<script  id="ch0103/17">
+  var x1 = Number(prompt())
+  var y1 = Number(prompt())
+  var x2 = Number(prompt())
+  var y2 = Number(prompt())
+  var x3 = Number(prompt())
+  var y3 = Number(prompt())
+  var c = ((x2 - x1) * (y3 - y1) / 2 ).toFixed(2)
+  console.log(c )
+</script>
+
+<script  id="ch0103/18">
+  var a1 = Number(prompt())
+  var a2 = Number(prompt())
+  var n = Number(prompt())
+  var an = a1 + (n - 1) * (a2 - a1)
+  console.log(an )
+</script>
+
+<script  id="ch0103/19">
+  var A = Number(prompt())
+  var B = Number(prompt())
+  var C = A * B
+  console.log(C)
+
+</script>
+<script  id="ch0103/20">
+  var n = Number(prompt())
+  var C = 2 ** n
+  console.log(C)
+
+
+</script>
+
+<script  id="ch0104/01">
+  var N = Number(prompt())
+  if(N > 0)
+    alert("positive");
+  else if(N = 0)
+    alert("zero");
+  else
+    alert("negative");
+
+</script>
+
+<script  id="ch0104/02">
+  var N = Number(prompt())
+  if( N < 0)
+    alert((-N).toFixed(2));
+  else
+    alert((N).toFixed(2));
+</script>
+
+<script  id="ch0104/03">
+  var N = Number(prompt())
+  if(N < 0)
+    alert("false");
+  else if(N % 2 === 0)
+    alert("even");
+  else(N % 2 != 0)
+    alert("odd");
+
+</script>
+
+<script  id="ch0104/04">
+  var N = Number(prompt())
+  var str = N
+  console.log(str.charCodeAt());
+  if(str % 2 != 0)
+    alert("YES");
+  else
+    alert("NO");
+
+</script>
+
+<script  id="ch0104/05">
+
+
+</script>
+
+<script  id="ch0104/06">
+
+</script>
+
+<script  id="ch0104/07">
+
+
+</script>
+
+<script  id="ch0104/08">
+
+</script>
