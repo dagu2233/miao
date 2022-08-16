@@ -1202,3 +1202,177 @@
   }
   console.log(sum);
 </script>
+
+<script  id="narcissistic">
+  var n = prompt();
+  var a = n.length;
+  var sum = 0
+  for( var i = 0; i < a ; i ++){
+    sum += n[i] ** a
+  }
+  if(sum == n){
+    console.log("YES");
+  } else{
+    console.log("NO");
+  }
+</script>
+
+<script  id="narcissistics">
+  var num = 100
+  do {
+    let a = parseInt(num % 10);        //个位
+    let b = parseInt(num / 10  % 10);   //十位
+    let c = parseInt(num / 100 % 10);   //百位
+    let d = parseInt(num / 1000 % 10);   //千位
+    if(a*a*a + b*b*b + c*c*c + d*d*d == num ) {
+      console.log(num);
+    }
+    num++;
+  } while (num < 10000)
+</script>
+
+<script  id="palindrom">
+  var n = prompt();
+  var a = n.length;
+  var count = 0;
+  for( var i = 0; i < Math.floor(a / 2); i ++){
+    if(n[i] == n[a - i - 1]){
+      count += 1;
+    }
+  }
+  if(a % 2 == 0){
+    if(count  == a / 2){
+      console.log("YES");
+    } else{
+      console.log("NO");
+    }
+  } else {
+    if(count == Math.floor(a / 2)){
+      console.log("YES");
+    } else {
+      console.log("NO");
+    }
+  }
+
+
+</script>
+
+<script  id="weekday">
+  let year = +prompt();
+  let month = +prompt();
+  let time = new Date(year, month - 1, 1);
+  console.log(time.getDay());
+
+</script>
+<script  id="complete-number">
+  var n = +prompt();
+  var sum = 0
+  for( var i = 1; i <= n ; i ++){
+    if(n % i == 0 ){
+      sum += i
+    }
+  }
+  if(n == sum - n){
+    console.log("YES");
+  } else {
+    console.log("NO");
+  }
+
+</script>
+
+<script  id="complete-numbers">
+
+  for( var i = 2; i <= 1000 ; i++){
+    var sum = 1
+    for( var b = 2; b <= i / 2; b++){
+      if(i % b == 0 ){
+        sum += b;
+      }
+    }
+    if(sum == i){
+      console.log(i);
+    }
+  }
+</script>
+
+<script  id="prime">
+  var n = +prompt();
+  var b = n.length
+  var sum = 0;
+  flag = 0;
+  for( var i = 2; i <= n / 2; i ++){
+    if(n % i == 0 ){
+      flag = 1;
+    }
+  }
+  if(n == 1){
+    console.log("NO");
+  } else if(flag = 1){
+    console.log("YES");
+  } else {
+    console.log("NO");
+  }
+
+
+
+</script>
+
+<script  id="primes">
+
+  for (var i = 2; i < 100; i++) {
+    flag = true;
+    for (var j = 2; j < i / 2; j++) {
+      if (i % j == 0)
+        flag = false;
+    }
+    if(i != 4 && flag == true){
+      console.log(i);
+    }
+  }
+
+</script>
+<script  id="itob">
+  var n = prompt();
+  console.log(n);
+
+</script>
+
+<script  id="lcf&lcm">
+ let a = +prompt();
+  let b = +prompt();
+  let min = Math.min(a, b);
+  let max = Math.max(a, b);
+  let lcf = 0;
+  let lcm = 0;
+  for (let i = 1; i <= min; i++) {
+    if (a % i === 0 && b % i === 0) {
+      lcf = i;
+    }
+  }
+  for (let i = 1; i <= min * max; i++) {
+    if (i % a === 0 && i % b === 0) {
+      lcm = i;
+      break;
+    }
+  }
+  console.log(lcf, lcm);
+</script>
+
+<script  id="sqrt">
+  let x = +prompt();
+  const sqrt = e => {
+    for (let i = 0; i <= e; i++) {
+      if (i * i === e) return i;
+      if (i * i > e) {
+        for (let j = 0; ; j++) {
+          if ((i - 0.001 * j) ** 2 < e) {
+            return i - 0.001 * j;
+          }
+        }
+      }
+    }
+  };
+
+  console.log(sqrt(x).toFixed(3));
+
+</script>
