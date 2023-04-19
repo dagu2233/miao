@@ -18,22 +18,18 @@ var dagu2233 = {
   },
 //创建一个新数组，包含原数组中所有的非假值元素。例如false, null,0, "", undefined, 和 NaN 都是被认为是“假值”。
   compact: function (arry) {
-    let sult = []
-    let index = 0;
-    for (let i = 0; i < arry.length; i++){
-      if (tupeof(arry[i]) === Number && arry[i] != 0 && !Number.isNaN(arry[i])) {
-        sult[index] = arry[i];
-        index++
-      }
+    var result = [];
+    for (let i = 0; i < arry.length; i++) {
+        if (arry[i]) {
+            result.push(ary[i]);
+        }
     }
-    return sult;
-
+    return result;
   },
   //使用 value 值来填充（替换） array，从start位置开始, 到end位置结束（但不包含end位置）。
-  fill: function (array, value, start, end) {
-    while(start != end) {
-      array[start] = value;
-      start++;
+  fill: function (array, value, start = 0, end = array.length) {
+    for (var i = start; i < end; i++) {
+      array[i] = value;
     }
     return array;
   },
@@ -75,11 +71,16 @@ var dagu2233 = {
   },
 //创建一个切片数组，去除array前面的n个元素。
   drop: function (array, n) {
-    let ns = [];
-    for (let i = n; i < array.length; i++){
-      ns.push(array[i])
+    var num = []
+    var m = array.length - n
+    if (m <= 0) {
+        return []
+    } else {
+        for (var i = n; i < array.length; i++) {
+            num.push(array[i])
+        }
     }
-    return ns;
+    return num;
   },
   //创建一个切片数组，去除array后面的n个元素。
   dropRight: function (array, n) {
@@ -120,20 +121,20 @@ var dagu2233 = {
     return -1;
   },
   //将array递归为一维数组。
-  flattenDeep: function (array) {
-    if (array.length === 0) {
-      return []
-    }
-    var result = []
+  flattenDeep: function (array, depth = 1) {
+    var ary = []
     for (var i = 0; i < array.length; i++) {
-        var item = array[i]
-        if (Array.isArray(item)) {
-            result = result.concat(flattenDeep(item))
-        } else {
-            result = result.concat(item)
+      var ary1 = array[i]
+      if (Array.isArray(ary1)) {
+        var flattenary1 = flattenDeep(ary1)
+        for (var j = 0; j < flattenary1.length; j++) {
+          ary.push(flattenary1[j])
         }
+      } else {
+        ary.push(ary1)
+      }
     }
-    return result;
+    return ary
   },
   //获取数组 array 的第一个元素。
   head : function(array) {
@@ -199,4 +200,67 @@ var dagu2233 = {
     }
     return num;
   },
+  //这个方法类似_.indexOf ，区别是它是从右到左遍历array的元素。
+  lastIndexOf: function (arr, val, lastIndex = arr.length - 1) {
+    for (var i = lastIndex; i >= 0; i--) {
+      if (arr[i] === val) {
+        return i
+      }
+    }
+    return -1;
+  },
+  //移除数组array中所有和给定值相等的元素，使用SameValueZero 进行全等比较。
+  pull: function (arr) {
+    for (var i = 1; i < arguments.length; i++) {
+      var item = arguments[i]
+      for (var j = 0; j < arr.length; j++) {
+        if (arr[j] === item) {
+          arr.splice(j, 1)
+        }
+      }
+    }
+    return arr;
+  },
+  //反转array，使得第一个元素变为最后一个元素，第二个元素变为倒数第二个元素，依次类推。
+  reverse: function (array) {
+    var left = 0;
+    var right = array.length - 1;
+    while (left < right) {
+      var temp = array[left]
+      array[left] = array[right]
+      array[right] = temp;
+      left++;
+      right--;
+    }
+    return array;
+  },
+  //使用二进制的方式检索来决定 value值 应该插入到数组中 尽可能小的索引位置，以保证array的排序。
+  sortedIndex: function (array, value) {
+    var left = 0;
+    var right = array.length;
+    while (left < right) {
+        var mid = Math.floor(left + (right - left) / 2)
+        if (array[mid] === value) {
+          right = mid;
+        } else if (array[mid] > value) {
+          right = mid;
+        } else if (array[mid] < value) {
+          left = mid + 1;
+        }
+    }
+    return left;
+  },
+  //创建一个按顺序排列的唯一值的数组。所有给定数组的元素值使用SameValueZero做等值比较。（注： arrays（数组）的并集，按顺序返回，返回数组的元素是唯一的）
+  union: function (...ary) {
+    let arr = ary.flat();
+    let unique = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (unique.indexOf(arr[i]) == -1) {
+            unique.push(arr[i]);
+        }
+    }
+    return unique;
+  },
+  //
+  11: function () {},
 }

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo - Vue</title>
+</head>
+<body>
+
+  <div id="container">
+    <h1>Todos {{ count }}</h1>
+    <div>
+      <input type="checkbox" :style="{visibility: 全选按钮visibility属性的值}" @click="切换全选()" :checked="是否已经全选">
+      <input ref="inputBox" type="text" @keyup.enter="addTodo" v-model.trim="todoInputText">
+    </div>
+
+    <ul :class="visible">
+      <li :key="todo.id" v-for="(todo, index) of visibleTodos" class="todo-item" :class="{active: !todo.completed , completed: todo.completed}">
+        <!-- <span>{{index + 1}}</span> -->
+        <input type="checkbox" v-model="todo.completed">
+        <input ref="editBox" @blur="编辑框失焦时($event, index)" autofocus @keyup="编辑框被按下键的时候($event, index)" v-if="index == editingIdx" type="text" :value="todo.text">
+        <span @dblclick="startEdit(index)" v-else>{{todo.text}}</span>
+        <button @click="deleteTodo(todo)">x</button>
+      </li>
+    </ul>
+    <div>
+      <span>{{剩余数量}} item(s) left</span>
+      <div>
+        <label><input type="radio" name="visible" v-model="visible" value="ALL"> All</label>
+        <label><input type="radio" name="visible" v-model="visible" value="ACTIVE"> Active</label>
+        <label><input type="radio" name="visible" v-model="visible" value="COMPLETED"> Completed</label>
+      </div>
+      <button v-if="是否显示清空按钮" @click="清空已完成项目()">Clear completed</button>
+    </div>
+  </div>
+
+  <!-- <script src="vue.global-3.2.45.js"></script> -->
+  <script src="vue-2.7.14.js"></script>
+
+
+
+  <script>
+    /**
+     * :attr="expr" 属性插值
+     * <span>{{expr}}</span> 内容插值
+     * @event="fun(a,b)" 事件绑定
+     * @event="fun" 事件绑定，fun接唯一一个事件对象
+     * @event="fun($event,a,b)" 事件绑定语法的内部，$event代表当前事件的事件对象
+     * @event="一段代码" 事件绑定，事件发生时执行里面的代码
+     *
+     * v-if="expr"  条件模板，条件成立时，v-if所在元素出现在dom，反之不出现
+     * v-else-if="expr"
+     * v-else-if="expr"
+     * v-else
+     *
+     * <div v-for="(item, index) of list"></div>
+     *   模板元素迭代，v-for所在元素重复出现若干次
+     *     (item, index)是创建的临时变量，只能在v-for所在元素及其内部使用
+     *
+     */
+    // Vue实例对象上可以代理访问到data字段及methods字段上的字段
+    // todoApp.visible === todoApp.$data.visible
+
+    var todoApp = new  Vue({
+      el: '#container',
+      // beforeCreate() {
+      //   debugger
+      // },
+      // created() {
+      //   debugger
+      // },
+      // beforeMount() {
+      //   debugger
+      // },
+      // mounted() {
+      //   this.intervalId = setInterval(() => {
+      //     this.count++
+      //   }, 1000)
+      // },
+      // beforeUpdate() {
+
+      // },
+      // updated() {
+
+      // },
+      // beforeUnmount() {
+      //   clearInterval(this.intervalId)
+      // },
+      // unmounted() {
+
+      // },
+
+      data: function() {
+        console.log(this)
+        return {
+          count: 0,
+          todoInputText: '',
+          todos: JSON.parse(localStorage.getItem('TODOS')) || [
+            {
+              "id": "asfdoiwjeoifwej",
+              "text": "eat",
+              "completed": false
+            },
+            {
+              "id": "ofwjifaslojwife",
+              "text": "drink",
+              "completed": true
+            }
+          ],
+          visible: 'ALL',
+          showAll: true,
+          showActive: false,
+          showCompleted: false,
+          editingIdx: -1,
+        }
+      },
+      watch: {
+        // todos: function(newTodos, oldTodos) {
+        //   console.log('todos变了')
+        //   localStorage.TODOS = JSON.stringify(newTodos)
+        // },
+        todos: {
+          handler: function(newTodos, oldTodos) {
+            console.log('todos变了')
+            localStorage.TODOS = JSON.stringify(newTodos)
+          },
+          deep: true,
+          immediate: true,
+        }
+      },
+      // 如果一些数据是从现有数据推算出来的，而不是能直接从现有数据中读取到的
+      // 则可以使用computed
+      computed: {
+        visibleTodos() {
+          return this.todos.filter(this.可见的)
+        },
+        剩余数量() {
+          return this.todos.filter(it => it.completed == false).length
+        },
+        是否显示清空按钮() {
+          return this.todos.some(it => it.completed == true)
+        },
+        是否已经全选() {
+          return this.todos.every(it => it.completed == true)
+        },
+        全选按钮visibility属性的值() {
+          return !this.todos.length ? 'hidden' : 'visible'
+        },
+      },
+      methods: {
+        startEdit(index) {
+          this.editingIdx = index
+          Vue.nextTick(() => {
+            // var box = this.$el.querySelector('li input[type="text"]')
+            var box = this.$refs.editBox
+            if (box.length > 0) {
+              box[0].focus()
+            }
+          })
+        },
+        可见的(todo) {
+          if (this.visible == 'ALL') {
+            return true
+          } else if (this.visible == 'ACTIVE') {
+            return todo.completed === false
+          } else {
+            return todo.completed === true
+          }
+        },
+        // methods字段里的function声明的函数，在运行时，其this都为当前的Vue实例对象
+        deleteTodo: function(todoObject) {
+          var idx = this.todos.findIndex(it => it === todoObject)
+          // 一定要判断idx大于等于0，因为里面的splice接收-1时表示从倒数第一项删除
+          if (idx >= 0) {
+            this.todos.splice(idx, 1)
+          }
+        },
+        addTodo(e) {
+          var text = this.todoInputText
+          if (text) {
+            this.todos.push({
+              id: Date.now() + '',
+              text: text,
+              completed: false,
+            })
+            this.todoInputText = ''
+          } else {
+            this.todoInputText = ''
+          }
+        },
+        切换全选() {
+          if (this.todos.every(it => it.completed == true)) {
+            this.todos.forEach(it => {
+              it.completed = false
+            })
+          } else {
+            this.todos.forEach(it => {
+              it.completed = true
+            })
+          }
+        },
+        清空已完成项目() {
+          this.todos = this.todos.filter(it => it.completed == false)
+        },
+        编辑框失焦时(e, index) {
+          console.log('blur')
+          var text = e.target.value.trim()
+          this.todos[index].text = text
+          this.editingIdx = -1
+        },
+        编辑框被按下键的时候(e, index) {
+          if (e.key == 'Enter') {
+            // console.log('enter')
+            this.编辑框失焦时(e, index)
+            // var text = e.target.value.trim()
+            // this.todos[index].text = text
+            // this.editingIdx = -1
+          } else if (e.key == 'Escape') {
+            // console.log('escape')
+            this.editingIdx = -1
+            // e.preventDefault()
+          }
+        }
+      }
+    })
+
+    // todoApp.mount('#container')
+
+
+  </script>
+</body>
+</html>
